@@ -36,8 +36,10 @@ export default {
     };
   },
   methods: {
-    deleteEmployee: function (param) {
-      console.log(param);
+    deleteEmployee: function (id) {
+      this.employees = this.employees.filter((employee) => {
+        return employee.id !== id;
+      });
     },
   },
 };
