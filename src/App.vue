@@ -1,12 +1,47 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <employee-form />
+    <employee-table :employees="employees" @delete:employee="deleteEmployee" />
   </div>
 </template>
+
+<script>
+import EmployeeForm from "@/components/EmployeeForm.vue";
+import EmployeeTable from "@/components/EmployeeTable.vue";
+export default {
+  name: "App",
+  components: {
+    EmployeeForm,
+    EmployeeTable,
+  },
+  data() {
+    return {
+      employees: [
+        {
+          id: 1,
+          name: "zdamao",
+          email: "zdamao@126.com",
+        },
+        {
+          id: 2,
+          name: "adamao",
+          email: "adamao@126.com",
+        },
+        {
+          id: 3,
+          name: "bdamao",
+          email: "bdamao@126.com",
+        },
+      ],
+    };
+  },
+  methods: {
+    deleteEmployee: function (param) {
+      console.log(param);
+    },
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
@@ -15,6 +50,8 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  width: 60%;
+  margin: 0 auto;
 }
 
 #nav {
