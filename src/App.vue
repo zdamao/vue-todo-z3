@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <employee-form />
-    <employee-table :employees="employees" @delete:employee="deleteEmployee" />
+    <employee-table
+      :employees="employees"
+      @delete:employee="deleteEmployee"
+      @edit:employee="editEmployee"
+    />
   </div>
 </template>
 
@@ -39,6 +43,12 @@ export default {
     deleteEmployee: function (id) {
       this.employees = this.employees.filter((employee) => {
         return employee.id !== id;
+      });
+    },
+    editEmployee: function (id, updatedEmployee) {
+      console.log(id, updatedEmployee);
+      this.employees = this.employees.map((employee) => {
+        return employee.id === id ? updatedEmployee : employee;
       });
     },
   },
