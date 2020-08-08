@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <employee-form />
+    <employee-form @add:employee="addEmployee" />
     <employee-table
       :employees="employees"
       @delete:employee="deleteEmployee"
@@ -40,6 +40,13 @@ export default {
     };
   },
   methods: {
+    addEmployee: function (employee) {
+      // console.log(employee);
+      const lastId = this.employees[this.employees.length - 1].id;
+      const id = lastId + 1;
+      const newEmployee = { ...employee, id };
+      this.employees = [...this.employees, newEmployee];
+    },
     deleteEmployee: function (id) {
       this.employees = this.employees.filter((employee) => {
         return employee.id !== id;

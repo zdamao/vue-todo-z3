@@ -55,7 +55,7 @@ export default {
       console.log(this.cachedEmployee);
     },
     editEmployee: function (employee) {
-      this.$emit("edit:employee", employee.id, employee);
+      this.$emit("edit:employee", employee);
       this.editing = null;
     },
     cancelEdit: function (employee) {
